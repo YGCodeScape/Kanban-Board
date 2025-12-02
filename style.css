@@ -9,9 +9,14 @@
     --bg-btn: #1a1a1a; 
 }
 
-html, body {
+html, body, main {
     width: 100%;
     height: 100%;
+}
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
  body {
     color: var(--primary-color);
@@ -22,6 +27,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 10px 20px;
 }
 nav button {
     background-color: var(--bg-btn);
@@ -31,4 +37,22 @@ nav button {
     padding: 10px;
     cursor: pointer;
     border-radius: 8px;
+}
+section {
+    padding: 20px 30px;
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    gap: 50px;
+}
+.task-column {
+    flex-grow: 1;
+    background-color: var(--bg-btn);
+}
+
+@media screen and (max-width: 768px) {
+    section {
+        gap: 14px;
+        padding: 10px 20px;
+    }
 }
