@@ -10,10 +10,16 @@ tasks.forEach( task => {
     })
 })
 
-progress.addEventListener("dragenter", (e) => {
-       progress.classList.add("hover-over")
-})
-
-progress.addEventListener("dragleave", (e) => {
-       progress.classList.remove("hover-over")
-})
+function addDragOverEvent(column) {
+    column.addEventListener("dragenter", (e) => {
+        e.preventDefault();
+        column.classList.add("hover-over")
+    })
+    column.addEventListener("dragleave", (e) => {
+        e.preventDefault();
+        column.classList.remove("hover-over")
+    })
+}
+addDragOverEvent(todo);
+addDragOverEvent(progress);
+addDragOverEvent(done);
