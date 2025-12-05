@@ -1,3 +1,5 @@
+let taskData = {}
+
 const todo = document.querySelector("#todo");
 const progress = document.querySelector("#Progress");
 const done = document.querySelector("#done"); 
@@ -10,6 +12,11 @@ const addBtn = document.querySelector("#add-new-task");
 const columns = [todo, progress, done]
 
 let dragElement = null;
+
+if (localStorage.getItem("tasks")) {
+    const data = JSON.parse(localStorage.getItem("tasks"));
+
+}
 
 tasks.forEach( task => {
     task.addEventListener("drag", (e) => {
@@ -75,10 +82,18 @@ addBtn.addEventListener("click", () => {
     todo.appendChild(div)
     modal.classList.remove("modal-active")
 
+    
         columns.forEach(col => {
             const tasks = col.querySelectorAll(".task")
             const count = col.querySelector(".right")
-
             count.innerText = tasks.length
+
+           taskData[col.id] = Array.from(tasks).map(t => {
+            return {
+                title : t.querySelector("h2").innerText,
+                desc : t.querySelector("p").innerText
+            }
+           })
+           localStorage.setItem("tasks", JSON.stringify(taskData));
         })
 })
