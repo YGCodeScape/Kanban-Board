@@ -58,8 +58,8 @@ section {
     border-radius: 8px;
     transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
 }
-.task-column.hover-over {
-    border: 2px dashed #fff;
+.hover-over {
+    border: 1px dashed #fff;
     scale: 1.05;
 }
 .heading {
