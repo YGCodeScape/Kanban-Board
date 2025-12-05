@@ -10,7 +10,7 @@
     <main>
         <nav>
             <div class="left">YGKanban</div>
-            <div class="right"><button>Add new Task</button></div>
+            <div class="right" id="toggle-modal"><button>Add new Task</button></div>
         </nav>
         <section class="board">
             <div id="todo" class="task-column">
@@ -38,6 +38,15 @@
             </div>
         </section>
     </main>
+
+    <div class="modal add-new-task">
+        <div class="bg"></div>
+        <div class="modal-center">
+            <input type="text" placeholder="Task Title" />
+            <textarea name="" id="" placeholder="Task Description"></textarea>
+            <button class="add-task-btn" id="add-new-task">Add Task</button>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
