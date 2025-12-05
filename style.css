@@ -6,7 +6,11 @@
 :root {
     --body-bg-color: rgb(14, 13, 13);
     --primary-color: #f4f4f4;
-    --bg-btn: #1a1a1a; 
+    --bg-btn: #1a1a1a;
+    --crimson: #D7263D;
+    --night: #02182B; 
+    --font-outfit: "Outfit", sans-serif;
+    --font-sans: "Work Sans", sans-serif;
 }
 button {
     cursor: pointer;
@@ -31,15 +35,22 @@ nav {
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
+    font-family: var(--font-outfit);
+}
+.logo {
+    font-size: 2rem;
+    line-height: 0;
 }
 nav button {
     background-color: var(--bg-btn);
     border: none;
     outline: none;
     color: var(--primary-color);
-    padding: 10px;
+    padding: 10px 20px;
     cursor: pointer;
     border-radius: 8px;
+    font-family: var(--font-outfit);
+    font-size: 14px;
 }
 section {
     padding: 20px 50px;
@@ -67,6 +78,7 @@ section {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    font-family: var(--font-outfit);
 }
 
 .task {
@@ -83,15 +95,23 @@ section {
 .task h2 {
     font-size: 1.5rem;
     font-weight: 500;
+    font-family: var(--font-outfit);
+}
+.task p {
+    font-family: var(--font-sans);
+    opacity: 0.7;
 }
 .task button {
     align-self: flex-end;
     padding: 7px 12px;
+    font-size: 16px;
+    font-weight: 500;
     border: none;
     outline: none;
     border-radius: 8px;
-    background: rgb(235, 35, 75);
-    color: #fff;
+    background: var(--crimson);
+    color: #ffffffde;
+    font-family: var(--font-sans);
 }
 
 .modal {
@@ -100,9 +120,12 @@ section {
     width: 100%;
     top: 0;
     left: 0;
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
+}
+.modal-active {
+    display: flex;
 }
 .bg {
     position: fixed;
@@ -137,19 +160,22 @@ section {
     color: white;
     padding: 10px;
     border-radius: 8px;
+    font-family: var(--font-sans);
 }
 .modal-center textarea {
     height: 40%;
 }
 .modal-center button {
-    width: 70%;
-    background-color: rgb(235, 35, 75);
+    width: 60%;
+    background-color: var(--crimson);
+    color: var(--night);
     color: #ffffffd8;
     border: none;
     outline: none;
     padding: 7px 12px;
     font-size: 1.4rem;
     border-radius: 8px;
+    font-family: var(--font-outfit);
 }
 
 @media screen and (max-width: 768px) {

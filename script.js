@@ -2,6 +2,9 @@ const todo = document.querySelector("#todo");
 const progress = document.querySelector("#Progress");
 const done = document.querySelector("#done"); 
 const tasks = document.querySelectorAll('.task');
+const modal = document.querySelector(".modal");
+const toggleModal = document.querySelector("#toggle-modal")
+
 let dragElement = null;
 
 tasks.forEach( task => {
@@ -34,3 +37,7 @@ function addDragOverEvent(column) {
 addDragOverEvent(todo);
 addDragOverEvent(progress);
 addDragOverEvent(done);
+
+toggleModal.addEventListener("click", () => {
+    modal.classList.add("modal-active")
+})
