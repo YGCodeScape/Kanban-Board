@@ -7,6 +7,7 @@ const modalBg = document.querySelector(".bg")
 const toggleModalBtn = document.querySelector("#toggle-modal")
 const addBtn = document.querySelector("#add-new-task");
 
+const columns = [todo, progress, done]
 
 let dragElement = null;
 
@@ -33,7 +34,7 @@ function addDragOverEvent(column) {
         column.classList.remove("hover-over");
         column.appendChild(dragElement);
 
-        [ todo, progress, done ].forEach(col => {
+        columns.forEach(col => {
             const tasks = col.querySelectorAll(".task")
             const count = col.querySelector(".right")
 
@@ -67,10 +68,17 @@ addBtn.addEventListener("click", () => {
                <p>${taskTextarea}</p>
                <button>Delete</button>  
             `
+
     div.addEventListener("drag", (e) => {
         dragElement = div;
     })
-
     todo.appendChild(div)
     modal.classList.remove("modal-active")
+
+        columns.forEach(col => {
+            const tasks = col.querySelectorAll(".task")
+            const count = col.querySelector(".right")
+
+            count.innerText = tasks.length
+        })
 })
