@@ -31,9 +31,15 @@ function addDragOverEvent(column) {
     column.addEventListener("drop", (e) => {
         e.preventDefault();  
         column.classList.remove("hover-over");
-
         column.appendChild(dragElement);
-        column.classList.remove("hover-open")
+
+        [ todo, progress, done ].forEach(col => {
+            const tasks = col.querySelectorAll(".task")
+            const count = col.querySelector(".right")
+
+            count.innerText = tasks.length
+        })
+
     })
 }
 
