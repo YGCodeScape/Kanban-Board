@@ -41,6 +41,11 @@ function addTask(title, desc, column) {
     div.addEventListener("drag", (e) => {
             dragElement = div;
     })
+    const deleteButton = div.querySelector("button");
+    deleteButton.addEventListener("click", () => {
+        div.remove()
+        updateTaskCount()
+    })
     return div
 };
 
