@@ -26,6 +26,7 @@ main {
     flex-direction: column;
 }
  body {
+    overflow: hidden;
     color: var(--primary-color);
     background-color: var(--body-bg-color);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -60,7 +61,8 @@ section {
     gap: 30px;
 }
 .task-column {
-    flex-grow: 1;
+    width: 32.22%;
+    height: 85vh;
     background-color: var(--bg-btn);
     padding: 10px 20px;
     display: flex;
@@ -69,6 +71,12 @@ section {
     gap: 20px;
     border-radius: 8px;
     transition: all 0.7s cubic-bezier(0.19, 1, 0.22, 1);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+.task-column::-webkit-scrollbar {
+    display: none;
 }
 .hover-over {
     border: 1px solid #ffffff5d;
@@ -98,8 +106,10 @@ section {
     font-family: var(--font-outfit);
 }
 .task p {
+    width: 100%;
     font-family: var(--font-sans);
     opacity: 0.7;
+
 }
 .task button {
     align-self: flex-end;
@@ -183,5 +193,9 @@ section {
         flex-direction: column;
         gap: 10px;
         padding: 10px 20px;
+    }
+    .task-column {
+        width: 100%;
+        height: 100%;
     }
 }

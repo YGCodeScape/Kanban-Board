@@ -112,4 +112,6 @@ addBtn.addEventListener("click", () => {
    updateTaskCount();
 
     modal.classList.remove("modal-active")
+    document.querySelector("#task-title").value = ""
+    document.querySelector("#task-area").value = ""
 })
