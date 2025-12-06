@@ -15,8 +15,51 @@ let dragElement = null;
 
 if (localStorage.getItem("tasks")) {
     const data = JSON.parse(localStorage.getItem("tasks"));
+    console.log(data)
 
+    for (const col in data) {
+        const column = document.querySelector(`#${col}`);
+
+        data[ col ].forEach(task => {
+            addTask(task.title, task.desc, column)
+        })
+        updateTaskCount();
+    }
 }
+
+function addTask(title, desc, column) {
+    const div = document.createElement("div")
+    div.classList.add("task")
+    div.setAttribute("draggable", "true")
+
+    div.innerHTML = `
+             <h2 >${title}</h2>
+             <p>${desc}</p>
+             <button>Delete</button>
+    `
+    column.appendChild(div)
+    div.addEventListener("drag", (e) => {
+            dragElement = div;
+    })
+    return div
+};
+
+function updateTaskCount() {
+        columns.forEach(col => {
+            const tasks = col.querySelectorAll(".task")
+            const count = col.querySelector(".right")
+
+           taskData[col.id] = Array.from(tasks).map(t => {
+            return {
+                title : t.querySelector("h2").innerText,
+                desc : t.querySelector("p").innerText
+            }
+           })
+           localStorage.setItem("tasks", JSON.stringify(taskData));
+           count.innerText = tasks.length
+        })
+};
+
 
 tasks.forEach( task => {
     task.addEventListener("drag", (e) => {
@@ -41,13 +84,7 @@ function addDragOverEvent(column) {
         column.classList.remove("hover-over");
         column.appendChild(dragElement);
 
-        columns.forEach(col => {
-            const tasks = col.querySelectorAll(".task")
-            const count = col.querySelector(".right")
-
-            count.innerText = tasks.length
-        })
-
+        updateTaskCount();
     })
 }
 
@@ -66,34 +103,8 @@ addBtn.addEventListener("click", () => {
    const taskTitle = document.querySelector("#task-title").value
    const taskTextarea = document.querySelector("#task-area").value
    
-   const div = document.createElement("div")
-   div.classList.add("task")
-   div.setAttribute("draggable", "true")
-   
-   div.innerHTML = `
-               <h2 >${taskTitle}</h2>
-               <p>${taskTextarea}</p>
-               <button>Delete</button>  
-            `
+   addTask(taskTitle, taskTextarea, todo);
+   updateTaskCount();
 
-    div.addEventListener("drag", (e) => {
-        dragElement = div;
-    })
-    todo.appendChild(div)
     modal.classList.remove("modal-active")
-
-    
-        columns.forEach(col => {
-            const tasks = col.querySelectorAll(".task")
-            const count = col.querySelector(".right")
-            count.innerText = tasks.length
-
-           taskData[col.id] = Array.from(tasks).map(t => {
-            return {
-                title : t.querySelector("h2").innerText,
-                desc : t.querySelector("p").innerText
-            }
-           })
-           localStorage.setItem("tasks", JSON.stringify(taskData));
-        })
 })
